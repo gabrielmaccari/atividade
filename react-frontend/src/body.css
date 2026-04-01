@@ -1,0 +1,9 @@
+.displayItems {
+    border-radius: 10px;
+}
+.displayItems:hover {
+    cursor: pointer;
+}
+.displayItems:hover {
+    border: 1px solid aqua;
+}
