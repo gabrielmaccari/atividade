@@ -3,8 +3,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const auth_config_1 = __importDefault(require("@config/auth.config"));
-const response_utils_1 = __importDefault(require("@utils/response.utils"));
+const auth_config_1 = __importDefault(require("../config/auth.config"));
+const response_utils_1 = __importDefault(require("../utils/response.utils"));
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 class AuthMiddleware {
     /**

@@ -1,7 +1,7 @@
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import ImageListItemBar from '@mui/material/ImageListItemBar';
-import '../body.css'
+import '../css/body.css'
 import {isMobile} from 'react-device-detect';
 
 export default function TitlebarImageList() {

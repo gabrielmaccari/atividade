@@ -24,6 +24,9 @@ const login = zod_1.z.object({
 const register = zod_1.z.object({
     username: usernameSchema,
     email: zod_1.z.string().email("Invalid email format"),
+    nomeCompleto: zod_1.z.string().trim().min(3, "Nome completo deve ter pelo menos 3 caracteres"),
+    idade: zod_1.z.number().int("Idade deve ser um numero inteiro").min(1, "Idade invalida"),
+    curso: zod_1.z.string().trim().min(2, "Curso e obrigatorio"),
     password: passwordSchema,
     password_confirmation: zod_1.z.string().min(1, "Password confirmation is required")
 }).refine((data) => data.password === data.password_confirmation, {

@@ -6,9 +6,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const cors_1 = __importDefault(require("cors"));
-const auth_routes_1 = __importDefault(require("@routes/auth.routes"));
+const auth_routes_1 = __importDefault(require("./routes/auth.routes"));
 const app_config_1 = __importDefault(require("./config/app.config"));
-const users_routes_1 = __importDefault(require("@routes/users.routes"));
+const users_routes_1 = __importDefault(require("./routes/users.routes"));
 class App {
     constructor() {
         this.app = (0, express_1.default)();
@@ -29,6 +29,10 @@ class App {
         }));
     }
     initRoutes() {
+        // health-check
+        this.app.get("/", (_, res) => {
+            res.status(200).json({ message: "API online" });
+        });
         // /api/auth/*
         this.app.use("/api/auth", auth_routes_1.default);
         // /api/user/*

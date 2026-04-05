@@ -9,7 +9,12 @@ class ValidationMiddleware {
                 schema.parse(req.body);
                 next();
             } catch (error) {
-                return Send.error(res, "Invalid request data");
+                if (error instanceof ZodError) {
+                    const { fieldErrors } = error.flatten();
+                    return Send.validationErrors(res, fieldErrors as Record<string, string[]>);
+                }
+
+                return Send.error(res, null, "Validation middleware failure");
             }
         };
     }

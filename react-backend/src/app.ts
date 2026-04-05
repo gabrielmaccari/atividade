@@ -27,6 +27,11 @@ class App {
     }
 
     private initRoutes() {
+        // health-check
+        this.app.get("/", (_, res) => {
+            res.status(200).json({ message: "API online" });
+        });
+
         // /api/auth/*
         this.app.use("/api/auth", authRoutes);
         // /api/user/*

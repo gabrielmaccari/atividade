@@ -82,7 +82,11 @@ class AuthController {
     }
     static register = async (req: Request, res: Response) => {
         // Destructure the request body into the expected fields
-        const { username, email, password, password_confirmation } = req.body as z.infer<typeof authSchema.register>;
+        const { username, email, password, nomeCompleto, idade, curso } = req.body as z.infer<typeof authSchema.register> & {
+            nomeCompleto: string;
+            idade: number;
+            curso: string;
+        };
 
         try {
             // 1. Check if the email already exists in the database
@@ -102,7 +106,10 @@ class AuthController {
                 data: {
                     username,
                     email,
-                    password: hashedPassword
+                    password: hashedPassword,
+                    nomeCompleto,
+                    idade,
+                    curso
                 }
             });
 

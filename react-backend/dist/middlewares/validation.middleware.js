@@ -3,7 +3,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const response_utils_1 = __importDefault(require("@utils/response.utils"));
+const response_utils_1 = __importDefault(require("../utils/response.utils"));
+const zod_1 = require("zod");
 class ValidationMiddleware {
     static validateBody(schema) {
         return (req, res, next) => {
@@ -12,7 +13,11 @@ class ValidationMiddleware {
                 next();
             }
             catch (error) {
-                return response_utils_1.default.error(res, "Invalid request data");
+                if (error instanceof zod_1.ZodError) {
+                    const { fieldErrors } = error.flatten();
+                    return response_utils_1.default.validationErrors(res, fieldErrors);
+                }
+                return response_utils_1.default.error(res, null, "Validation middleware failure");
             }
         };
     }

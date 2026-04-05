@@ -3,11 +3,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const response_utils_1 = __importDefault(require("@utils/response.utils"));
-const db_1 = require("db");
+const response_utils_1 = __importDefault(require("../utils/response.utils"));
+const db_1 = require("../db");
 const bcryptjs_1 = __importDefault(require("bcryptjs"));
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
-const auth_config_1 = __importDefault(require("@config/auth.config"));
+const auth_config_1 = __importDefault(require("../config/auth.config"));
 class AuthController {
     static login = async (req, res) => {
         // Destructure the request body into the expected fields
@@ -70,7 +70,7 @@ class AuthController {
     };
     static register = async (req, res) => {
         // Destructure the request body into the expected fields
-        const { username, email, password, password_confirmation } = req.body;
+        const { username, email, password, nomeCompleto, idade, curso } = req.body;
         try {
             // 1. Check if the email already exists in the database
             const existingUser = await db_1.prisma.user.findUnique({
@@ -87,7 +87,10 @@ class AuthController {
                 data: {
                     username,
                     email,
-                    password: hashedPassword
+                    password: hashedPassword,
+                    nomeCompleto,
+                    idade,
+                    curso
                 }
             });
             // 4. Return a success response with the new user data (excluding password for security)

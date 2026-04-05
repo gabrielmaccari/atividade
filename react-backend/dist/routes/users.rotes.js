@@ -4,8 +4,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const router_1 = __importDefault(require("./router"));
-const auth_middleware_1 = __importDefault(require("@middlewares/auth.middleware"));
-const user_controller_1 = __importDefault(require("@controllers/user.controller"));
+const auth_middleware_1 = __importDefault(require("../middlewares/auth.middleware"));
+const user_controller_1 = __importDefault(require("../controllers/user.controller"));
 class UserRoutes extends router_1.default {
     routes() {
         return [

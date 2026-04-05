@@ -3,11 +3,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const auth_controller_1 = __importDefault(require("@controllers/auth.controller"));
+const auth_controller_1 = __importDefault(require("../controllers/auth.controller"));
 const router_1 = __importDefault(require("./router"));
-const validation_middleware_1 = __importDefault(require("@middlewares/validation.middleware"));
-const auth_schema_1 = __importDefault(require("validations/auth.schema"));
-const auth_middleware_1 = __importDefault(require("@middlewares/auth.middleware"));
+const validation_middleware_1 = __importDefault(require("../middlewares/validation.middleware"));
+const auth_schema_1 = __importDefault(require("../validations/auth.schema"));
+const auth_middleware_1 = __importDefault(require("../middlewares/auth.middleware"));
 class AuthRouter extends router_1.default {
     routes() {
         return [

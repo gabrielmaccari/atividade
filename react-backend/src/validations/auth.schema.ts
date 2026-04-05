@@ -26,6 +26,9 @@ const login = z.object({
 const register = z.object({
     username: usernameSchema,
     email: z.string().email("Invalid email format"),
+    nomeCompleto: z.string().trim().min(3, "Nome completo deve ter pelo menos 3 caracteres"),
+    idade: z.number().int("Idade deve ser um numero inteiro").min(1, "Idade invalida"),
+    curso: z.string().trim().min(2, "Curso e obrigatorio"),
     password: passwordSchema,
     password_confirmation: z.string().min(1, "Password confirmation is required")
 }).refine((data) => data.password === data.password_confirmation, {
