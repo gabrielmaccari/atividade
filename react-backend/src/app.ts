@@ -2,8 +2,8 @@ import express, { Express } from "express";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import authRoutes from "@routes/auth.routes";
-import appConfig from "@config/app.config";
-import userRoutes from "@routes/user.routes";
+import appConfig from "./config/app.config";
+import userRoutes from "@routes/users.routes";
 
 class App {
     constructor() {
